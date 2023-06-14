@@ -9,7 +9,7 @@ cd "C:\Users\WB514665\OneDrive - WBG\DECDG\SDG Atlas 2022\Ch12\playground-sdg-12
 *** INCOME GROUP AND GLOBAL DATA ***
 ************************************
 // Income group averages and global average from separate excel file (not in WDI)
-import excel "Inputdata\CWON2021 Country Tool - Full Dataset.xlsx", sheet("income_bal") cellrange(A2:AF153) firstrow clear
+import excel "Input data\CWON2021 Country Tool - Full Dataset.xlsx", sheet("income_bal") cellrange(A2:AF153) firstrow clear
 keep wb_income year nk pop
 drop if wb_income=="0"
 expand 2 if wb_income=="High income: OECD", gen(HighIncome)
@@ -60,10 +60,10 @@ lab var growth_nca "Growth in natrual capital per capita since first year in dat
 lab var loggrowth_gdp "Log10 growth in real GDP per capita since first year in dataset"
 lab var loggrowth_nca "Log10 growth in natural capital per capita since first year in dataset"
 compress
-export delimited using "Outputdata/CWON.csv", replace
+export delimited using "Output data/cwon.csv", replace
 
 // Globe
 keep if year==2018
 keep countryname code growth_nca
 sort growth
-export delimited using "Outputdata/Globe.csv", replace
+export delimited using "Output data/globe.csv", replace
